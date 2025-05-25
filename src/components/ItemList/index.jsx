@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import React from 'react'
 import styles from './ItemList.module.css'
 
 const ItemList = ({item}) => {
   return (
     <Link className={styles.link} to={`${item.id}`}>
+      
 
     <div className={styles.card}>
       <div className={styles.img}>

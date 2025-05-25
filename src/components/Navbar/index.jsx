@@ -27,7 +27,7 @@ const Navbar = () => {
       <nav className={styles.navbar}>
 
         <div>
-              <NavLink to='/' className={styles.title} > <h2>Fake Store</h2> </NavLink>
+              <NavLink to='/' className={styles.title} > <h2>Ecommerce React</h2> </NavLink>
         </div>
 
         <ul className={`${styles['navbar__menu']} ${showMenu ? styles['show'] : ""}`}>
