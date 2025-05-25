@@ -1,5 +1,5 @@
 import ItemList from "../ItemList"
-import styles from './itemListContainer.module.css'
+import styles from './ItemListContainer.module.css'
 
 const ItemListContainer = ({items}) => {
 
