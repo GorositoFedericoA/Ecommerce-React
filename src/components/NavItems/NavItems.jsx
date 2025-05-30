@@ -27,14 +27,16 @@ export default function NavItems() {
           className={`m-1 px-1 fs-5 `}
         >
           <NavDropdown.Item
-            href="/category/womens-clothing"
+            as={NavLink}
+            to="/category/womens-clothing"
             className={`m-1 px-1 fs-6 ${styles.link}`}
           >
             Ropa Mujer
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item
-            href="/category/mens-clothing"
+            as={NavLink}
+            to="/category/mens-clothing"
             className={`m-1 px-1 fs-6 ${styles.link}`}
           >
             Ropa Hombre

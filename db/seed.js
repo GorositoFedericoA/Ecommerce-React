@@ -4,7 +4,7 @@ import products from "../products.js";
 
 const seed = collection(db, "items");
 
-const promises =products.map(product => addDoc(seed, product));
+const promises = products.map(product => addDoc(seed, product));
 
 Promise.all(promises)
     .then(() =>{
