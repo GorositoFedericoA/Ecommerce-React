@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./itemDetailContainer.module.css";
 import { doc, getDoc } from "firebase/firestore";
-import db from "../../../db/firebase-config.js";
+import analytics from "../../../db/firebase-config.js";
 import { CartContext } from "../../context/CartContext.jsx";
 import Spinner from "../Spinner";
 
@@ -52,7 +52,7 @@ const ItemDetailContainer = () => {
   const quantityPerItem = getQuantitybyId(id);
 
   const getItem = async () => {
-    const itemDoc = doc(db, "items", id);
+    const itemDoc = doc(analytics, "items", id);
     const item = await getDoc(itemDoc);
     if (item.exists()) {
       setItem(item.data());

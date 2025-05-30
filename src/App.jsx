@@ -4,7 +4,7 @@ import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import Navbar from './components/Navbar'
 import Filter from './components/Filter'
-import db from '../db/firebase-config.js'
+import analytics from '../db/firebase-config.js'
 import { collection, getDocs } from 'firebase/firestore'
 import Cart from './components/Cart'
 import { CartProvider } from './context/CartContext.jsx'
@@ -12,7 +12,7 @@ import { CartProvider } from './context/CartContext.jsx'
 
 function App() {
   const [items, setItems] = useState([]);
-  const itemsRef = collection(db, 'items');
+  const itemsRef = collection(analytics, 'items');
 
   const getItems = async () => {
     const itemsCollection = await getDocs(itemsRef);
