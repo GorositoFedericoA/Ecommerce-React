@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./itemDetailContainer.module.css";
 import { doc, getDoc } from "firebase/firestore";
 import db from "../../../db/firebase-config.js";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext.jsx";
 import Spinner from "../Spinner";
 
 const ItemDetailContainer = () => {

@@ -7,7 +7,7 @@ import Filter from './components/Filter'
 import db from '../db/firebase-config.js'
 import { collection, getDocs } from 'firebase/firestore'
 import Cart from './components/Cart'
-import { CartProvider } from './context/CartContext'
+import { CartProvider } from './context/CartContext.jsx'
 
 
 function App() {

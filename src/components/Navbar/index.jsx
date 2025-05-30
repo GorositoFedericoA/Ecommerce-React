@@ -1,71 +1,70 @@
-import styles from './Navbar.module.css'
-import { NavLink } from 'react-router-dom'
-import { useContext, useState } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
-import CartWidget from '../CartWidget'
-import { CartContext } from '../../context/CartContext'
+import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import CartWidget from "../CartWidget";
+import { CartContext } from "../../context/CartContext";
+import { Navbar as NavBar, Nav, Container } from "react-bootstrap";
+import NavItems from "../NavItems/NavItems";
+import logo from "../../assets/Ecommerce-React-logo.png"; // Importa el logo
 
 const Navbar = () => {
-  
-  const [showMenu, setShowMenu] = useState(false)
-
-  
-  const  [cart, setCart] = useContext(CartContext)
-
-  const quantity = cart.reduce((acc, curr) =>{
-    return acc + curr.quantity
-  }, 0)
 
 
-  const handleClick = () => {
-    setShowMenu(!showMenu)
-  }
+  const [cart, setCart] = useContext(CartContext);  //Context del carrito
+  const quantity = cart.reduce((acc, curr) => acc + curr.quantity, 0); //Cantidad de productos en el carrito
 
-  
-  return (
-    <>
-      <nav className={styles.navbar}>
+    return (
+      <>
+      
+      <div className="w-100 bg-dark text-light text-center py-1">
+        <p className="mb-0 small">
+          Bienvenidos a Ecommerce-React hecho por Federico Gorosito!!🎉
+        </p>
+      </div>
+      <NavBar expand="lg" className="border-bottom border-2 border-dark">
+        <Container fluid className="d-flex justify-content-between align-items-center py-2">
 
-        <div>
-              <NavLink to='/' className={styles.title} > <h2>Ecommerce React</h2> </NavLink>
-        </div>
+              <NavBar.Brand href="/" className="fs-3 d-flex align-items-center">
+                {/* Izquierda: Logo */}
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className={`${styles.logo} d-inline-block align-top`}
+                />
+              </NavBar.Brand>
 
-        <ul className={`${styles['navbar__menu']} ${showMenu ? styles['show'] : ""}`}>
+            <div className="mx-auto d-none d-lg-flex">
+              {/* Centro: Links (solo en pantallas grandes) */}
+              <Nav className="d-flex justify-content-center align-items-center">
+                <NavItems />
+              </Nav>
+            </div>
 
-          <li >
-            <NavLink to='/items' className={styles.links}>Productos</NavLink>
-          </li>
+            <div className="d-flex align-items-center gap-3">
+                <NavLink
+                  to="/cart"
+                  className={`d-flex justify-content-center align-items-center text-decoration-none`}
+                >
+                  <CartWidget />
+                  {quantity > 0 && (
+                    <div id="quantity" className={`${styles.quantity}`}>
+                      {quantity}
+                    </div>
+                  )}
+                </NavLink>
+            <NavBar.Toggle aria-controls="basic-navbar-nav" />
+            </div>
 
-          <li>  
-            <NavLink to="/category/mens-clothing" className={styles.links}>Men's clothing</NavLink>
-          </li>
-          
-          <li>
-            <NavLink to="/category/jewelery" className={styles.links} >Jewelery</NavLink>
-          </li>
+        </Container>
+        <NavBar.Collapse id="basic-navbar-nav">
+          <Nav className="flex-column mx-1 p-1 d-lg-none">
+            <NavItems />
+          </Nav>
+        </NavBar.Collapse>
+      </NavBar>
+      </>
+    );
 
-          <li>
-            <NavLink to="/category/electronics" className={styles.links}>Electronics</NavLink>
-          </li>
+};
 
-          <li>
-            <NavLink to="/category/womens-clothing" className={styles.links}>Women's clothing</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/cart" className={styles.quantity}> <CartWidget />{quantity}</NavLink>
-          </li>
-
-
-        </ul>
-
-        <div className={styles['navbar__menu-toggle']} onClick={handleClick}>
-          {showMenu ? <FaTimes style={{color: "#ffffff"}} /> : <FaBars style={{color: "#ffffff"}} />}
-        </div>
-        
-      </nav>
-    </>
-  )
-}
-
-export default Navbar
+export default Navbar;

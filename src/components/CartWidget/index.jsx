@@ -1,11 +1,10 @@
-import React from 'react'
-import { FaShoppingCart } from 'react-icons/fa'
-
+import logo from '../../assets/compras.png' // Importa el logo del carrito
+import styles from '../CartWidget/CartWidget.module.css' // Importa los estilos del carrito
 
 const CartWidget = () => {
   return (
     <>
-      <FaShoppingCart style={{color: '#6985C0', width: '1.5rem', height: 'auto'}}  />
+      <img src={logo} alt="" className={styles.logo} />
     </>
   )
 }
