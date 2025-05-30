@@ -24,7 +24,7 @@ export default function NavItems() {
         <NavDropdown
           id="nav-dropdown"
           title="Ropa"
-          className={`m-1 px-1 fs-5 ${styles.link}`}
+          className={`m-1 px-1 fs-5 `}
         >
           <NavDropdown.Item
             href="/category/womens-clothing"
