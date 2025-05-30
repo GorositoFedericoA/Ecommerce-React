@@ -1,6 +1,6 @@
 import { collection,addDoc } from "firebase/firestore";
 import db from "./firebase-config.js";
-import products from "../products.js";
+import products from "./products.js";
 
 const seed = collection(db, "items");
 
