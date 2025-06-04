@@ -33,17 +33,17 @@ function App() {
         <CartProvider>
           <Navbar />
             <Routes>
+
+              {/* Ruta de items */}
               <Route path="/" element={ <Navigate to='/items'/> } />
               <Route path='/items' element={<ItemListContainer items={items}/>}/>
-              <Route path='/category/mens-clothing' element={<Filter items={items} category="men's clothing"/>} />
-              <Route path="/category/mens-clothing/:id" element={<ItemDetailContainer  />} />
-              <Route path='/category/jewelery' element={<Filter items={items} category="jewelery"/>} />
-              <Route path="/category/jewelery/:id" element={<ItemDetailContainer />} />
-              <Route path='/category/electronics' element={<Filter items={items} category="electronics"/>} />
-              <Route path="/category/electronics/:id" element={<ItemDetailContainer />} />
-              <Route path='/category/womens-clothing' element={<Filter items={items} category="women's clothing"/>} />
-              <Route path="/category/womens-clothing/:id" element={<ItemDetailContainer />} />
               <Route path='/items/:id' element={<ItemDetailContainer  />} />
+
+              {/* Rutas de categorias */}
+              <Route path='/category/:category' element={<ItemListContainer items={items}/>} />
+              <Route path="/category/:category/:id" element={<ItemDetailContainer />} />
+
+              {/* Ruta de carrito */}
               <Route path="/cart" element={ <Cart items={items} /> }/>
             </Routes>
       </CartProvider>

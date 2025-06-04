@@ -1,16 +1,30 @@
+.categoria{
+  font-size: 1rem;
+  color: #5b5959;
+  margin-bottom: 10px;
+}
+
+.link{
+  text-decoration: none;
+}
+
 .card{
-  margin: 1rem;
-  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.348);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-  text-align: center;
+  border: none;
+  margin: 1rem;
+  padding: 0rem;
+  background-color: #f6f6f6;
+  max-width: 20rem;
+  min-width: 1rem;
 }
 
 .card:hover{
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
-.price{
-  font-size: 1.5rem;
-  font-weight: 600;
+.img{
+  max-width: 18rem;
+  min-width: 1rem;
+  object-fit: contain;
 }

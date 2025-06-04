@@ -1,31 +1,24 @@
-import { Link } from 'react-router-dom'
-import styles from './ItemList.module.css'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
+import { Link } from "react-router-dom";
+import styles from "./ItemList.module.css";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
+const ItemList = ({ item }) => {
+  const { id, thumbnail, category, title, price } = item;
 
-const ItemList = ({item}) => {
   return (
-    <Container fluid className='d-flex justify-content-center align-items-center flex-grap'>
-          <Card className={styles.card}>
-      <Card.Img variant="top" className={styles.img} src={item.thumbnail} />
-
+        <Link className={styles.link} to={`/items/${id}`}>
+    <Card className={styles.card}>
+      <Card.Img variant="top" className={styles.img} src={thumbnail} />
       <Card.Body>
-        <Card.Title>{item.title}</Card.Title>
-        <Card.Text>{item.category}</Card.Text>
-        <Card.Text>${item.price}</Card.Text>
-        <Link className={styles.link} to={`${item.id}`}>
-          <Button
-            variant="primary">
-            Comprar
-          </Button>
-        </Link>
+        <Card.Text className={styles.categoria}>{category}</Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>${price}</Card.Text>
+          {/* <Button variant="dark">Comprar</Button> */}
       </Card.Body>
     </Card>
-    </Container>
-
+        </Link>
   );
-}
+};
 
-export default ItemList
+export default ItemList;

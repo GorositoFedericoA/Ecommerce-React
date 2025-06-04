@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import styles from "../NavItems/NavItems.module.css";
-import { NavDropdown } from "react-bootstrap"; // Importa NavDropdown de react-bootstrap
 
 export default function NavItems() {
 
@@ -10,38 +9,29 @@ export default function NavItems() {
           Inicio
         </NavLink>
         <NavLink
-          to="/category/jewelery"
+          to="/category/fragancias"
           className={`m-1 fs-5 px-1 ${styles.link}`}
         >
-          Joyeria
+          Fragancias
         </NavLink>
         <NavLink
-          to="/category/electronics"
+          to="/category/alimentos"
           className={`m-1 fs-5 px-1 ${styles.link}`}
         >
-          Electronica
+          Alimentos
         </NavLink>
-        <NavDropdown
-          id="nav-dropdown"
-          title="Ropa"
-          className={`m-1 px-1 fs-5 `}
+                <NavLink
+          to="/category/belleza"
+          className={`m-1 fs-5 px-1 ${styles.link}`}
         >
-          <NavDropdown.Item
-            as={NavLink}
-            to="/category/womens-clothing"
-            className={`m-1 px-1 fs-6 ${styles.link}`}
-          >
-            Ropa Mujer
-          </NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item
-            as={NavLink}
-            to="/category/mens-clothing"
-            className={`m-1 px-1 fs-6 ${styles.link}`}
-          >
-            Ropa Hombre
-          </NavDropdown.Item>
-        </NavDropdown>
+          Belleza
+        </NavLink>
+                <NavLink
+          to="/category/muebles"
+          className={`m-1 fs-5 px-1 ${styles.link}`}
+        >
+          Muebles
+        </NavLink>
       </>
     );
 
