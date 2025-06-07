@@ -8,22 +8,45 @@
   padding: 1rem;
   font-weight: bold;
   border: 1px solid #000;
-  background: #000000;
-}
-
-.agregarBtn {
-  padding: 0.3rem;
-  background: #fff;
-  color: #000;
-  border: 1px solid #000;
+  background: #000;
+  color: #fff;
 }
 
 .carritoBtn:hover {
   background: #fff;
   color: #000;
+  transition: 0.3s;
+}
+
+.agregarBtn {
+  padding: 0.3rem 1rem;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  font-weight: bold;
 }
 
 .agregarBtn:hover {
+  background: #000;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.contadorBtnGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cantidadDisplay {
+  padding: 0.3rem 1.2rem;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
   background: #fff;
   color: #000;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

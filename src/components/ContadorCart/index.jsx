@@ -18,18 +18,24 @@ const ContadorCart = ({ id, onAgregarAlCarrito }) => {
         setCantidad(1);
     }
 
-    return(
-            <>
-               <ButtonGroup>
-                    <ToggleButton className={styles.agregarBtn} onClick={restarCantidad}>-</ToggleButton>
-                    <ToggleButton className={styles.agregarBtn} >{cantidad}</ToggleButton>
-                    <ToggleButton className={styles.agregarBtn} onClick={sumarCantidad}>+</ToggleButton>
-                </ButtonGroup>
+    return (
+      <>
+        <ButtonGroup className={styles.contadorBtnGroup}>
+          <Button className={styles.agregarBtn} onClick={restarCantidad}>
+            -
+          </Button>
 
-                <Button className={styles.carritoBtn} onClick={handleAgregar}>
-                    AGREGAR AL CARRITO
-                </Button>
-            </>
+          <div className={styles.cantidadDisplay}>{cantidad}</div>
+
+          <Button className={styles.agregarBtn} onClick={sumarCantidad}>
+            +
+          </Button>
+        </ButtonGroup>
+
+        <Button className={styles.carritoBtn} onClick={handleAgregar}>
+          AGREGAR AL CARRITO
+        </Button>
+      </>
     );
 
 };
