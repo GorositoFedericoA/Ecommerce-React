@@ -5,52 +5,53 @@ import { doc, getDoc } from "firebase/firestore";
 import analytics from "../../../db/firebase-config.js";
 import { CartContext } from "../../context/CartContext.jsx";
 import Spinner from "../Spinner";
+import Container from "react-bootstrap/Container";
+import { Col, Row } from "react-bootstrap";
+import ContadorCart from "../ContadorCart/index.jsx";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const [isLoading, setisLoading] = useState(true);
   const [cart, setCart] = useContext(CartContext);
+  const productInCart = cart.find(p => p.id === id);
+  const quantity = productInCart ? productInCart.quantity : 0;
 
-  const addToCart = () => {
+
+  const addToCart = (cantidad) => {
     setCart((currItems) => {
       const isItemsFound = currItems.find((item) => item.id === id);
-      if (isItemsFound) {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
-          } else {
+      if (isItemsFound) 
+        {
+          return currItems.map((item) => {
+          if (item.id === id) 
+          {
+            return { ...item, quantity: item.quantity + cantidad };
+          } 
+          else 
+          {
             return item;
           }
         });
-      } else {
-        return [...currItems, { id, quantity: 1, price: item.price, title: item.title, image: item.image, category: item.category }];
+      } 
+      else 
+      {
+        return [
+          ...currItems, 
+          {
+            id,
+            quantity: cantidad,
+            price: item.price,
+            title: item.title,
+            thumbnail: item.thumbnail,
+            category: item.category 
+          }
+        ];
       }
     });
   };
 
-  const removeItem = () => {
-    setCart((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
-      } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  };
-
-  const getQuantitybyId = (id) => {
-    return cart.find((item) => item.id === id)?.quantity || 0;
-  };
-
-  const quantityPerItem = getQuantitybyId(id);
-
+  
   const getItem = async () => {
     const itemDoc = doc(analytics, "items", id);
     const item = await getDoc(itemDoc);
@@ -62,39 +63,40 @@ const ItemDetailContainer = () => {
     }
   };
 
+
   useEffect(() => {
     getItem();
   }, []);
 
   return (
     <>
-    {isLoading ? (<Spinner />) : (
-    <div className={styles.card}>
-      <div className={styles.img}>
-        <img className={styles.img} src={item.image} />
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Container className={styles.container}>
+          <Row className={styles.row}>
+            <Col xs={12} md={6} className={styles.imageCol}>
+              <img
+                className={styles.img}
+                src={item.thumbnail}
+                alt={item.title}
+              />
+            </Col>
+            <Col xs={12} md={6} className={styles.detailsCol}>
+              <p className={styles.category}>{item.category.toUpperCase()}</p>
+              <h2 className={styles.title}>{item.title}</h2>
+              <p>{item.description}</p>
+              <p className={styles.price}>${item.price}</p>
 
-      <div className={styles.content}>
-        <h3>{item.title}</h3>
-        <p>{item.category}</p>
-        <p>{item.description}</p>
-        <p>$ {item.price}</p>
-        <div className={styles.btnContainer}>
-          {quantityPerItem > 0 ? (
-            <button onClick={() => addToCart()}>+</button>
-            ) : (
-              <button onClick={() => addToCart()}>Agregar el carrito</button>
-              )}
-          <div>{quantityPerItem > 0 && <div>{quantityPerItem}</div>}</div>
-          {quantityPerItem > 0 && (
-            <button onClick={() => removeItem(item.id)}>-</button>
-            )}
-          </div>
-      </div>
-    </div>
-    )}
+
+              <ContadorCart id={id} onAgregarAlCarrito={addToCart} />
+
+            </Col>
+          </Row>
+        </Container>
+      )}
     </>
   );
 };
 
-export default ItemDetailContainer;
+export default ItemDetailContainer

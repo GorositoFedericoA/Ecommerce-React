@@ -24,14 +24,14 @@ const Navbar = () => {
       <NavBar expand="lg" className="border-bottom border-2 border-dark">
         <Container fluid className="d-flex justify-content-between align-items-center py-2">
 
-              <NavBar.Brand href="/" className="fs-3 d-flex align-items-center">
+              <NavLink to="/items" className="fs-3 d-flex align-items-center">
                 {/* Izquierda: Logo */}
                 <img
                   src={logo}
                   alt="Logo"
                   className={`${styles.logo} d-inline-block align-top`}
                 />
-              </NavBar.Brand>
+              </NavLink>
 
             <div className="mx-auto d-none d-lg-flex">
               {/* Centro: Links (solo en pantallas grandes) */}

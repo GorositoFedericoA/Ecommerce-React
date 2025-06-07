@@ -1,14 +1,13 @@
-import styles from './Spinner.module.css'
+import { Spinner } from 'react-bootstrap';
+import styles from './Spinner.module.css';
 
-const Spinner = () => {
+const SpinnerFullScreen = () => {
   return (
-    <div className={styles.container}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div className={styles.spinnerFullscreen}>
+      <Spinner animation="border" role="status" variant="primary" />
+      <p className="text-light mt-3">Cargando...</p>
     </div>
-  )
-}
+  );
+};
 
-export default Spinner
+export default SpinnerFullScreen;

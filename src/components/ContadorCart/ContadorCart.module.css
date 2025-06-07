@@ -1,0 +1,29 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.carritoBtn {
+  padding: 1rem;
+  font-weight: bold;
+  border: 1px solid #000;
+  background: #000000;
+}
+
+.agregarBtn {
+  padding: 0.3rem;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.carritoBtn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.agregarBtn:hover {
+  background: #fff;
+  color: #000;
+}

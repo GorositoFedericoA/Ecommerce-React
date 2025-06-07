@@ -3,7 +3,7 @@ import styles from './ItemListContainer.module.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Carrousel from '../Carrousel';
+import Carrousel from '../Carousel';
 import { useParams } from "react-router-dom";
 
 
@@ -24,7 +24,7 @@ const ItemListContainer = ({items}) => {
       <Row className="g-4 align-items-center justify-content-center">
       {
       itemsFiltrados.map((item)=>(
-      <Col key={item.id} xs={12} sm={6} md={4} lg={3}>
+      <Col key={item.id} xs={6} sm={6} md={4} lg={3}>
         <ItemList item={item} key={item.id} {...item} />
       </Col>
       ))
